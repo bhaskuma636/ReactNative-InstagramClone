@@ -4,19 +4,40 @@ import { Avatar, Icon } from "react-native-elements";
 
 interface BottomNavProps {}
 
-export default function BottomNav() {
+export default function BottomNav({ state, descriptors, navigation }: any) {
   return (
     <View style={styles.container}>
-      <Icon name="home" type="font-awesome-5" size={20} />
-      <Icon name="search" type="font-awesome-5" size={20} />
-      <Icon name="plus" type="font-awesome-5" size={20} />
-      <Icon name="shopping-bag" type="font-awesome-5" size={20} />
-      <Avatar
-        rounded
-        source={{
-          uri: "https://instagram.fist1-1.fna.fbcdn.net/v/t51.2885-19/s320x320/49906797_380124925925082_1601135169106870272_n.jpg?tp=1&_nc_ht=instagram.fist1-1.fna.fbcdn.net&_nc_ohc=637wdSBqFN8AX_JIamb&tn=hVRdPgI3BYoFMwoO&edm=ABfd0MgBAAAA&ccb=7-4&oh=586f31310773ed590c3ddcf7efdc2b0a&oe=60E59D72&_nc_sid=7bff83",
-        }}
-      />
+      {state.routes.map((route: any, index: number) => {
+        const isFocused = state.index === index;
+        const onPress = () => {
+          const event = navigation.emit({
+            type: "tabPress",
+            target: route.key,
+          });
+
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name);
+          }
+        };
+
+        const onLongPress = () => {
+          navigation.emit({
+            type: "tabLongPress",
+            target: route.key,
+          });
+        };
+
+        return (
+          <Icon
+            key={index}
+            name={route.name}
+            type="font-awesome-5"
+            size={20}
+            {...{ onPress, onLongPress }}
+            color={isFocused ? "#000" : "#a6a3a2"}
+          />
+        );
+      })}
     </View>
   );
 }

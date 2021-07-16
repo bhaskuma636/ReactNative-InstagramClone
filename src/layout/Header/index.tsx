@@ -1,54 +1,14 @@
 import React from "react";
-import { StyleSheet, Text, Image, View, Dimensions } from "react-native";
-import { Icon } from "react-native-elements";
+import { StyleSheet, View } from "react-native";
+
+import MainHeader from "./components/MainHeader";
+import ProfileScreenHeader from "./components/ProfileScreenHeader";
 
 interface HeaderProps {}
 
-const { width } = Dimensions.get("window");
-export default function Header() {
-  return (
-    <View style={styles.container}>
-      <Image
-        source={{
-          uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2560px-Instagram_logo.svg.png",
-        }}
-        style={styles.logo}
-      />
-      <View style={styles.buttonContainer}>
-        <Icon
-          name="heart"
-          size={20}
-          type="font-awesome-5"
-          style={styles.button}
-        />
-        <Icon name="send" size={20} type="font-awesome" style={styles.button} />
-      </View>
-    </View>
-  );
+export default function Header(props: any) {
+  const index = props.props?.scene?.route?.state?.index;
+  return <View>{index === 4 ? <ProfileScreenHeader /> : <MainHeader />}</View>;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    width,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingTop: 30,
-    paddingBottom: 5,
-    borderBottomWidth: 0.2,
-    borderBottomColor: "#757575",
-  },
-  logo: {
-    width: 150,
-    height: 40,
-    resizeMode: "contain",
-  },
-  buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  button: {
-    marginHorizontal: 5,
-  },
-});
+const styles = StyleSheet.create({});

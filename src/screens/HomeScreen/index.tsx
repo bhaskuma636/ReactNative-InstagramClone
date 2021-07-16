@@ -1,18 +1,17 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import MainLayout from "../../layout";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import Stories from "./components/Stories";
 import Posts from "./components/Posts";
 
-interface HomePageProps {}
+interface HomeScreenProps {}
 
-export default function HomePage() {
+export default function HomeScreen() {
   return (
-    <MainLayout>
+    <ScrollView>
       <Stories />
 
       <Posts />
-    </MainLayout>
+    </ScrollView>
   );
 }
 

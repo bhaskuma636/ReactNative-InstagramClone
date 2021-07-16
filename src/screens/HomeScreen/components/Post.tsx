@@ -1,7 +1,13 @@
 import React, { useRef } from "react";
 import { Dimensions, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Avatar, Icon, Image, Input } from "react-native-elements";
-import { Extrapolate, interpolateNode } from "react-native-reanimated";
+import {
+  Extrapolate,
+  interpolate,
+  useAnimatedScrollHandler,
+  useAnimatedStyle,
+  useSharedValue,
+} from "react-native-reanimated";
 import Animated from "react-native-reanimated";
 
 interface PostProps {
@@ -25,22 +31,12 @@ interface PostProps {
 
 const { width } = Dimensions.get("window");
 export default function Post({ post }: PostProps) {
-  const scrollX = useRef(new Animated.Value(0)).current;
+  const scrollX = useSharedValue(0);
 
-  const onScroll = Animated.event(
-    [
-      {
-        nativeEvent: {
-          contentOffset: {
-            x: scrollX,
-          },
-        },
-      },
-    ],
-    {
-      useNativeDriver: true,
-    }
-  );
+  const onScroll = useAnimatedScrollHandler((event) => {
+    scrollX.value = event.contentOffset.x;
+  });
+
   return (
     <View style={{ ...styles.container }}>
       <View style={{ ...styles.headerContainer, ...styles.horizontalPadding }}>
@@ -58,6 +54,7 @@ export default function Post({ post }: PostProps) {
         horizontal
         showsHorizontalScrollIndicator={false}
         pagingEnabled
+        scrollEventThrottle={16}
         {...{ onScroll }}
       >
         {post.post.images.map((image, index) => (
@@ -65,6 +62,7 @@ export default function Post({ post }: PostProps) {
             source={{ uri: image }}
             key={index}
             style={{ ...styles.postImage }}
+            onPress={() => console.log(scrollX.value)}
           />
         ))}
       </Animated.ScrollView>
@@ -94,30 +92,31 @@ export default function Post({ post }: PostProps) {
         <View style={{ ...styles.dotContainer }}>
           {post.post.images.length > 1 &&
             post.post.images.map((_, index) => {
-              const scale = interpolateNode(scrollX, {
-                inputRange: [
-                  (index - 1) * width,
-                  index * width,
-                  (index + 1) * width,
-                ],
-                outputRange: [1, 1.3, 1],
-                extrapolate: Extrapolate.CLAMP,
-              });
-              const opacity = interpolateNode(scrollX, {
-                inputRange: [
-                  (index - 1) * width,
-                  index * width,
-                  (index + 1) * width,
-                ],
-                outputRange: [0.2, 1, 0.2],
-                extrapolate: Extrapolate.CLAMP,
-              });
-              return (
-                <Animated.View
-                  key={index}
-                  style={{ ...styles.dot, opacity, transform: [{ scale }] }}
-                />
-              );
+              const animatedStyle = useAnimatedStyle(() => {
+                const scale = interpolate(
+                  scrollX.value,
+                  [(index - 1) * width, index * width, (index + 1) * width],
+                  [1, 1.3, 1],
+                  Extrapolate.CLAMP
+                );
+                const opacity = interpolate(
+                  scrollX.value,
+                  [(index - 1) * width, index * width, (index + 1) * width],
+                  [0.2, 1, 0.2],
+                  Extrapolate.CLAMP
+                );
+                return {
+                  width: 10,
+                  height: 10,
+                  borderRadius: 50,
+                  backgroundColor: "#333",
+                  marginHorizontal: 2,
+                  opacity,
+                  transform: [{ scale }],
+                };
+              }, [scrollX.value]);
+
+              return <Animated.View key={index} style={{ ...animatedStyle }} />;
             })}
         </View>
 

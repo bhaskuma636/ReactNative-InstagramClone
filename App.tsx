@@ -1,13 +1,14 @@
-import { StatusBar } from "expo-status-bar";
+import "react-native-gesture-handler";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import HomePage from "./src/screens/HomePage";
+import { NavigationContainer } from "@react-navigation/native";
+import StackNavigator from "./src/navigation/StackNavigator";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <HomePage />
-    </View>
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
   );
 }
 

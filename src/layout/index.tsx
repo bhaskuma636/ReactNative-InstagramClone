@@ -7,8 +7,7 @@ interface MainLayoutProps {}
 
 export default function MainLayout({ children }: any) {
   return (
-    <View>
-      <Header />
+    <View style={{ flex: 1 }}>
       <ScrollView>{children}</ScrollView>
       <BottomNav />
     </View>
