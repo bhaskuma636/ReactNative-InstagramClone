@@ -8,33 +8,33 @@ const STORIES = [
   {
     name: "fatihkayann20",
     imageUrl:
-      "https://instagram.fist1-1.fna.fbcdn.net/v/t51.2885-19/s320x320/49906797_380124925925082_1601135169106870272_n.jpg?tp=1&_nc_ht=instagram.fist1-1.fna.fbcdn.net&_nc_ohc=637wdSBqFN8AX_JIamb&tn=hVRdPgI3BYoFMwoO&edm=ABfd0MgBAAAA&ccb=7-4&oh=586f31310773ed590c3ddcf7efdc2b0a&oe=60E59D72&_nc_sid=7bff83",
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
   },
 
   {
     name: "engindemirog",
     imageUrl:
-      "https://instagram.fist1-1.fna.fbcdn.net/v/t51.2885-19/s150x150/189337287_157068476387605_5806488396190982072_n.jpg?tp=1&_nc_ht=instagram.fist1-1.fna.fbcdn.net&_nc_ohc=8LXeBDTX0kIAX82HSa_&edm=ALlQn9MBAAAA&ccb=7-4&oh=87fd1550722c312db9add4c36633116a&oe=60E6592A&_nc_sid=48a2a6",
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
   },
   {
     name: "yasinunalcetin",
     imageUrl:
-      "https://instagram.fist1-1.fna.fbcdn.net/v/t51.2885-19/s150x150/206260803_767053870646474_4599444697995669275_n.jpg?tp=1&_nc_ht=instagram.fist1-1.fna.fbcdn.net&_nc_ohc=XfC6oHkTrT4AX9ukqmR&edm=ALlQn9MBAAAA&ccb=7-4&oh=b0e09065b6b46d1d82ebc0e5e8f0ca91&oe=60E70653&_nc_sid=48a2a6",
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
   },
   {
     name: "esrasnck",
     imageUrl:
-      "https://instagram.fist1-1.fna.fbcdn.net/v/t51.2885-19/s150x150/122159938_174601314207643_6912668928673012528_n.jpg?tp=1&_nc_ht=instagram.fist1-1.fna.fbcdn.net&_nc_ohc=eaHVKbrOu74AX_YJPtI&edm=ALlQn9MBAAAA&ccb=7-4&oh=c0c703f214b2060cb2f3bc45c8f5d60e&oe=60E6A79F&_nc_sid=48a2a6",
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
   },
   {
     name: "fatihkayann20",
     imageUrl:
-      "https://instagram.fist1-1.fna.fbcdn.net/v/t51.2885-19/s320x320/49906797_380124925925082_1601135169106870272_n.jpg?tp=1&_nc_ht=instagram.fist1-1.fna.fbcdn.net&_nc_ohc=637wdSBqFN8AX_JIamb&tn=hVRdPgI3BYoFMwoO&edm=ABfd0MgBAAAA&ccb=7-4&oh=586f31310773ed590c3ddcf7efdc2b0a&oe=60E59D72&_nc_sid=7bff83",
+      "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
   },
   {
     name: "kerimcanoymak",
     imageUrl:
-      "https://instagram.fist1-1.fna.fbcdn.net/v/t51.2885-19/s150x150/203872384_224962119267446_9195111104128955623_n.jpg?tp=1&_nc_ht=instagram.fist1-1.fna.fbcdn.net&_nc_ohc=LwL8O9uFBtwAX8h34j-&edm=ALlQn9MBAAAA&ccb=7-4&oh=17655d24122b6aee222689d1802f25b1&oe=60E5AF4E&_nc_sid=48a2a6",
+      "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
   },
 ];
 

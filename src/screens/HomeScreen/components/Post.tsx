@@ -62,7 +62,6 @@ export default function Post({ post }: PostProps) {
             source={{ uri: image }}
             key={index}
             style={{ ...styles.postImage }}
-            onPress={() => console.log(scrollX.value)}
           />
         ))}
       </Animated.ScrollView>

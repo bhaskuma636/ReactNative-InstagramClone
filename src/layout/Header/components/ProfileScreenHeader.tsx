@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Dimensions, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  Dimensions,
+  Pressable,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { BottomSheet, Icon, Image, ListItem } from "react-native-elements";
 
 interface ProfileScreenHeaderProps {}
@@ -76,10 +83,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingTop: 30,
     paddingBottom: 5,
     borderBottomWidth: 0.2,
     borderBottomColor: "#757575",
+    marginTop: StatusBar.currentHeight,
+    paddingHorizontal: 20,
   },
   leftContainer: {
     flexDirection: "row",

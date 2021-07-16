@@ -1,4 +1,5 @@
 import React from "react";
+import { StatusBar } from "react-native";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
 import { Icon, Image } from "react-native-elements";
 
@@ -33,10 +34,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingTop: 30,
     paddingBottom: 5,
     borderBottomWidth: 0.2,
     borderBottomColor: "#757575",
+    marginTop: StatusBar.currentHeight,
   },
   logo: {
     width: 150,

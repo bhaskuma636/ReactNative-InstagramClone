@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
 import Stories from "./components/Stories";
 import Posts from "./components/Posts";
 
@@ -7,12 +7,18 @@ interface HomeScreenProps {}
 
 export default function HomeScreen() {
   return (
-    <ScrollView>
-      <Stories />
+    <View style={styles.container}>
+      <ScrollView>
+        <Stories />
 
-      <Posts />
-    </ScrollView>
+        <Posts />
+      </ScrollView>
+    </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
