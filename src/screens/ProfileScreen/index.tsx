@@ -1,5 +1,5 @@
-import React from "react";
-import { Dimensions, StyleSheet, Text, View, Button } from "react-native";
+import React, { useRef } from "react";
+import { Dimensions, StyleSheet, Text, View, Pressable } from "react-native";
 import { Image } from "react-native-elements";
 import { Icon } from "react-native-elements/dist/icons/Icon";
 import { ScrollView } from "react-native-gesture-handler";
@@ -8,6 +8,8 @@ import Animated, {
   useAnimatedScrollHandler,
   useAnimatedStyle,
   useSharedValue,
+  withSpring,
+  withTiming,
 } from "react-native-reanimated";
 import Stories from "../HomeScreen/components/Stories";
 
@@ -34,11 +36,16 @@ const TAGGED_IMAGES = [
 ];
 export default function Profile() {
   const scrollX = useSharedValue(0);
+  const scrollRef = useRef(null);
 
   const onScroll = useAnimatedScrollHandler((event) => {
     scrollX.value = event.contentOffset.x;
   });
 
+  const changeGrid = (value: number) => {
+    scrollX.value = withTiming(value * width);
+    scrollRef.current?.scrollTo({ x: value * width, animated: true });
+  };
   const navBorderStyle = useAnimatedStyle(() => {
     const translateX = interpolate(
       scrollX.value,
@@ -89,24 +96,39 @@ export default function Profile() {
           <Text style={{ ...styles.bioText, ...styles.lightText }}>
             Personal Blog
           </Text>
-          <Text style={{ ...styles.bioText }}>❤️Mustafa Kemal Atatürk❤️</Text>
-          <Text style={{ ...styles.bioText }}>Denizli / Burdur</Text>
-          <Text style={{ ...styles.bioText }}>AAL 🎓</Text>
-          <Text style={{ ...styles.bioText }}>MAKU</Text>
           <Text style={{ ...styles.bioText }}>
-            Electrical and Electronics Engineering
-          </Text>
-          <Text style={{ ...styles.bioText }}>
-            Junior software developer 💻
+            ❤️Mustafa Kemal Atatürk❤️ {"\n"} Denizli / Burdur {"\n"} AAL {"\n"}{" "}
+            MAKU {"\n"} Electrical and Electronics Engineering {"\n"} Junior
+            software developer 💻
           </Text>
         </View>
 
         <View style={{ ...styles.containerWithPadding }}>
-          <Button title="Edit Profile" onPress={() => console.log("aaa")} />
+          <Pressable
+            onPress={() => console.log("aaa")}
+            style={styles.editProfileButton}
+          >
+            <Text style={styles.buttonText}> Edit Profile </Text>
+          </Pressable>
           <View style={{ ...styles.buttonContainer }}>
-            <Button title="Promotions" onPress={() => console.log("aaa")} />
-            <Button title="Insights" onPress={() => console.log("aaa")} />
-            <Button title="Contact" onPress={() => console.log("aaa")} />
+            <Pressable
+              onPress={() => console.log("aaa")}
+              style={styles.editProfileButton}
+            >
+              <Text style={styles.buttonText}> Promotions </Text>
+            </Pressable>
+            <Pressable
+              onPress={() => console.log("aaa")}
+              style={{ ...styles.editProfileButton, ...styles.middleButton }}
+            >
+              <Text style={styles.buttonText}> Insights </Text>
+            </Pressable>
+            <Pressable
+              onPress={() => console.log("aaa")}
+              style={styles.editProfileButton}
+            >
+              <Text style={styles.buttonText}> Contact </Text>
+            </Pressable>
           </View>
         </View>
         <View>
@@ -114,8 +136,12 @@ export default function Profile() {
         </View>
 
         <View style={styles.navContainer}>
-          <Icon name="grid-on" size={30} />
-          <Icon name="perm-contact-cal" size={30} />
+          <Icon name="grid-on" size={30} onPress={() => changeGrid(0)} />
+          <Icon
+            name="perm-contact-cal"
+            size={30}
+            onPress={() => changeGrid(1)}
+          />
         </View>
 
         <Animated.View style={navBorderStyle} />
@@ -128,6 +154,7 @@ export default function Profile() {
               showsHorizontalScrollIndicator: false,
               pagingEnabled: true,
             }}
+            ref={scrollRef}
           >
             <View style={{ ...styles.userPostsContainer }}>
               {IMAGES.map((image, index) => (
@@ -192,6 +219,7 @@ const styles = StyleSheet.create({
   },
   bioText: {
     fontSize: 13,
+    lineHeight: 20,
   },
   lightText: {
     color: "#8E8E8E",
@@ -199,8 +227,25 @@ const styles = StyleSheet.create({
 
   buttonContainer: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     alignItems: "center",
+  },
+
+  editProfileButton: {
+    flex: 1,
+    borderWidth: 1,
+    paddingVertical: 7,
+    borderColor: "#cbcbcb",
+    marginVertical: 5,
+  },
+  buttonText: {
+    fontSize: 15,
+    lineHeight: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  middleButton: {
+    marginHorizontal: 5,
   },
   navContainer: {
     flexDirection: "row",

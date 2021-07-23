@@ -5,6 +5,7 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  TouchableWithoutFeedback,
   View,
 } from "react-native";
 import { BottomSheet, Icon, Image, ListItem } from "react-native-elements";
@@ -42,37 +43,38 @@ export default function ProfileScreenHeader() {
           style={styles.button}
         />
       </View>
-
-      <BottomSheet
-        isVisible={state.isVisible}
-        containerStyle={{ backgroundColor: "rgba(0.5, 0.25, 0, 0.2)" }}
-        modalProps={{
-          animationType: "slide",
-        }}
-      >
-        <ListItem onPress={handleSwitchAccount}>
-          <ListItem.Content style={{ ...styles.listItemContainer }}>
-            <View style={{ ...styles.listItemLeftContainer }}>
-              <Image
-                source={{
-                  uri: "https://instagram.fist1-1.fna.fbcdn.net/v/t51.2885-19/s320x320/49906797_380124925925082_1601135169106870272_n.jpg?tp=1&_nc_ht=instagram.fist1-1.fna.fbcdn.net&_nc_ohc=637wdSBqFN8AX_JIamb&tn=hVRdPgI3BYoFMwoO&edm=ABfd0MgBAAAA&ccb=7-4&oh=586f31310773ed590c3ddcf7efdc2b0a&oe=60E59D72&_nc_sid=7bff83",
-                }}
-                style={{ ...styles.image }}
-              />
-              <ListItem.Title>fatihkayann20</ListItem.Title>
-            </View>
-            <View style={{ ...styles.activeDot }} />
-          </ListItem.Content>
-        </ListItem>
-        <ListItem onPress={handleSwitchAccount}>
-          <ListItem.Content style={{ ...styles.listItemContainer }}>
-            <View style={{ ...styles.listItemLeftContainer }}>
-              <Icon name="plus-circle" type="font-awesome-5" size={37} />
-              <ListItem.Title>Add a new account</ListItem.Title>
-            </View>
-          </ListItem.Content>
-        </ListItem>
-      </BottomSheet>
+      <TouchableWithoutFeedback onPress={handleSwitchAccount}>
+        <BottomSheet
+          isVisible={state.isVisible}
+          containerStyle={{ backgroundColor: "rgba(0.5, 0.25, 0, 0.2)" }}
+          modalProps={{
+            animationType: "slide",
+          }}
+        >
+          <ListItem onPress={handleSwitchAccount}>
+            <ListItem.Content style={{ ...styles.listItemContainer }}>
+              <View style={{ ...styles.listItemLeftContainer }}>
+                <Image
+                  source={{
+                    uri: "https://instagram.fist1-1.fna.fbcdn.net/v/t51.2885-19/s320x320/49906797_380124925925082_1601135169106870272_n.jpg?tp=1&_nc_ht=instagram.fist1-1.fna.fbcdn.net&_nc_ohc=637wdSBqFN8AX_JIamb&tn=hVRdPgI3BYoFMwoO&edm=ABfd0MgBAAAA&ccb=7-4&oh=586f31310773ed590c3ddcf7efdc2b0a&oe=60E59D72&_nc_sid=7bff83",
+                  }}
+                  style={{ ...styles.image }}
+                />
+                <ListItem.Title>fatihkayann20</ListItem.Title>
+              </View>
+              <View style={{ ...styles.activeDot }} />
+            </ListItem.Content>
+          </ListItem>
+          <ListItem onPress={handleSwitchAccount}>
+            <ListItem.Content style={{ ...styles.listItemContainer }}>
+              <View style={{ ...styles.listItemLeftContainer }}>
+                <Icon name="plus-circle" type="font-awesome-5" size={37} />
+                <ListItem.Title>Add a new account</ListItem.Title>
+              </View>
+            </ListItem.Content>
+          </ListItem>
+        </BottomSheet>
+      </TouchableWithoutFeedback>
     </View>
   );
 }
